@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=OlivOS Welcome
+Comment=Welcome screen and quick shortcuts for OlivOS GNU/Linux
+Exec=olivos-welcome
+Icon=olivos-logo
+Terminal=false
+Categories=System;
+StartupNotify=true

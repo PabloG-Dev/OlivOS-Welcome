@@ -1,0 +1,3 @@
+#!/bin/bash
+# Wrapper para lanzar OlivOS Welcome
+exec python3 /usr/share/olivos-welcome/main.py "$@"
