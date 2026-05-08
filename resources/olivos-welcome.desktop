@@ -5,7 +5,6 @@ Name=OlivOS Welcome
 Comment=Welcome screen and quick shortcuts for OlivOS GNU/Linux
 Exec=olivos-welcome
 Icon=olivos-logo
-Path=/usr/share/olivos-welcome
 Terminal=false
 Categories=System;
 StartupNotify=true
