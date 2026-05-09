@@ -151,13 +151,24 @@ class MainPage(QWidget):
         subprocess.Popen(["octoxbps"])
 
     def open_system_info(self):
-        subprocess.Popen(["alacritty -e bash -c 'fastfetch; exec bash'"])
-
+        subprocess.Popen([
+            "alacritty",
+            "-e",
+            "bash",
+            "-c",
+            "fastfetch; exec bash"
+        ])
     def open_news(self):
         webbrowser.open("https://olivoslinux.com")
 
     def open_updater(self):
-        subprocess.Popen(["alacritty -e bash -c 'xbps-install -Syu; exec bash'"])
+        subprocess.Popen([
+            "alacritty",
+            "-e",
+            "bash",
+            "-c",
+            "sudo xbps-install -Syu; exec bash"
+        ])
 
     def open_recovery(self):
         subprocess.Popen(["timeshift-launcher"])
