@@ -47,6 +47,8 @@ class MainPage(QWidget):
             self.install_btn.setFixedSize(120, 50)
             header.addWidget(self.install_btn)
 
+            self.install_btn.clicked.connect(self.install_system)
+
         main_layout.addLayout(header)
         main_layout.addStretch()
 
@@ -143,6 +145,11 @@ class MainPage(QWidget):
         return btn
 
     # CALLBACKS
+    def install_system(self):
+        subprocess.Popen([
+            "almazara-installer"
+        ])
+
     def open_website(self):
         import webbrowser
         webbrowser.open("https://olivoslinux.com")
