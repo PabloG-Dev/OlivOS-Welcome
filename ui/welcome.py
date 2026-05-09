@@ -3,7 +3,7 @@ from PySide6.QtWidgets import (
     QPushButton, QCheckBox
 )
 from PySide6.QtGui import QPixmap, QIcon
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QTranslator
 import subprocess
 from utils.autostart_utils import Autostart
 from pathlib import Path
@@ -28,8 +28,8 @@ class MainPage(QWidget):
         header = QHBoxLayout()
 
         title_layout = QVBoxLayout()
-        self.title = QLabel("¡Bienvenido a OlivOS!")
-        self.subtitle = QLabel("Tu sistema operativo amigable y ágil.")
+        self.title = QLabel(self.tr("¡Bienvenido a OlivOS!"))
+        self.subtitle = QLabel(self.tr("Tu sistema operativo amigable y ágil."))
 
         self.title.setObjectName("title")
         self.subtitle.setObjectName("subtitle")
@@ -58,9 +58,9 @@ class MainPage(QWidget):
         left_col = QVBoxLayout()
         left_col.setSpacing(10)
 
-        left_col.addWidget(self.create_card("Página Oficial", "images/web.png", self.open_website))
-        left_col.addWidget(self.create_card("Tienda de Aplicaciones", "images/store.png", self.open_store))
-        left_col.addWidget(self.create_card("Información del Sistema", "images/info.png", self.open_system_info))
+        left_col.addWidget(self.create_card(self.tr("Página Oficial"), "images/web.png", self.open_website))
+        left_col.addWidget(self.create_card(self.tr("Tienda de Aplicaciones"), "images/store.png", self.open_store))
+        left_col.addWidget(self.create_card(self.tr("Información del Sistema"), "images/info.png", self.open_system_info))
         #left_col.addWidget(self.create_card("CuerdOS Noticias", "images/news.png", self.open_news))
 
         content.addLayout(left_col)
@@ -84,9 +84,9 @@ class MainPage(QWidget):
         right_col = QVBoxLayout()
         right_col.setSpacing(10)
 
-        right_col.addWidget(self.create_card("Actualizar Sistema", "images/update.png", self.open_updater))
-        right_col.addWidget(self.create_card("Gestor de Recuperación", "images/recovery.png", self.open_recovery))
-        right_col.addWidget(self.create_card("Wiki Oficial", "images/wiki.png", self.open_wiki))
+        right_col.addWidget(self.create_card(self.tr("Actualizar Sistema"), "images/update.png", self.open_updater))
+        right_col.addWidget(self.create_card(self.tr("Gestor de Recuperación"), "images/recovery.png", self.open_recovery))
+        right_col.addWidget(self.create_card(self.tr("Wiki Oficial"), "images/wiki.png", self.open_wiki))
         # right_col.addWidget(self.create_card("Ver Novedades", "images/refresh.png", self.open_whats_new))
 
         content.addLayout(right_col)
@@ -95,7 +95,7 @@ class MainPage(QWidget):
         main_layout.addStretch()
 
         # FOOTER INFO
-        self.footer_text = QLabel("OlivOS está diseñado para ser rápido y eficiente.")
+        self.footer_text = QLabel(self.tr("OlivOS está diseñado para ser rápido y eficiente."))
         self.footer_text.setAlignment(Qt.AlignCenter)
         self.footer_text.setObjectName("footer")
 
@@ -104,7 +104,7 @@ class MainPage(QWidget):
         # BOTTOM BAR
         bottom = QHBoxLayout()
 
-        self.auto_check = QCheckBox("Iniciar automáticamente al acceder al escritorio")
+        self.auto_check = QCheckBox(self.tr("Iniciar automáticamente al acceder al escritorio"))
         self.auto_check.setChecked(self.autostart.is_enabled())
         bottom.addWidget(self.auto_check)
 
@@ -116,8 +116,10 @@ class MainPage(QWidget):
         bottom.addWidget(self.icon_label("images/telegram.png"))
 
         # Botón cerrar
-        self.close_btn = QPushButton("Cerrar")
+        self.close_btn = QPushButton(self.tr("Cerrar"))
         self.close_btn.setObjectName("closeButton")
+
+        self.close_btn.clicked.connect(self.close)
 
         bottom.addWidget(self.close_btn)
 
