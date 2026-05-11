@@ -24,6 +24,9 @@ class MainPage(QWidget):
         main_layout.setContentsMargins(20, 20, 20, 20)
         main_layout.setSpacing(15)
 
+        # Nombre de ventana
+        self.setWindowTitle(self.tr("Bienvenido a OlivOS"))
+
         # HEADER
         header = QHBoxLayout()
 
@@ -42,7 +45,7 @@ class MainPage(QWidget):
 
         # Botón instalar
         if self.is_live_system():
-            self.install_btn = QPushButton("Instalar OlivOS")
+            self.install_btn = QPushButton(self.tr("Instalar OlivOS"))
             self.install_btn.setObjectName("installButton")
             self.install_btn.setFixedSize(120, 50)
             header.addWidget(self.install_btn)
